@@ -1,0 +1,25 @@
+$breakpoints: (
+  "small": (
+    min-width: 550px,
+  ),
+  "medium": (
+    min-width: 1100px,
+  ),
+  "large": (
+    min-width: 1440px,
+  ),
+) !default;
+
+@mixin breakpoint($size) {
+  @if map-has-key($breakpoints, $size) {
+    @media #{inspect(map-get($breakpoints, $size))} {
+      @content;
+    }
+  }
+}
+
+@mixin customBreakpoint($size) {
+  @media (max-width: $size) {
+    @content;
+  }
+}
