@@ -20,6 +20,22 @@ export const fetchTransactions = async ({
   return returnValue;
 };
 
+export const fetchByBeneficiary = async (beneficiary: string) => {
+  let returnValue: Transaction[] = [];
+
+  try {
+    const response = await fetch(
+      BASEURL + `/transactions?beneficiary_like=${beneficiary}`
+    );
+    const data = await response.json();
+    returnValue = data;
+  } catch (err) {
+    console.error(err);
+  }
+
+  return returnValue;
+};
+
 export const addTransaction = () => {
   console.log("I am called");
 };
