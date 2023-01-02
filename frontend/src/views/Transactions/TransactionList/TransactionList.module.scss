@@ -1,0 +1,20 @@
+.section {
+  position: relative;
+  overflow: scroll;
+  background-color: #d1d1d1;
+}
+
+.container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.loader {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0rem;
+}

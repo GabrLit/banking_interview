@@ -1,0 +1,18 @@
+.container {
+  padding: 1rem 1rem;
+  color: black;
+
+  border-bottom: 1px solid black;
+}
+
+.amount {
+  font-size: 24px;
+
+  &_green {
+    color: green;
+  }
+
+  &_red {
+    color: red;
+  }
+}
