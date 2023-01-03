@@ -5,12 +5,14 @@ import cn from "classnames";
 interface TransactionFilterProps {
   className?: string;
   searchByBeneficiary: string;
+  scrollToTop: () => void;
   onBeneficiarySearch: (searchValue: string) => void;
 }
 
 const TransactionFilter = ({
   className,
   searchByBeneficiary,
+  scrollToTop,
   onBeneficiarySearch,
 }: TransactionFilterProps) => {
   return (
@@ -21,7 +23,10 @@ const TransactionFilter = ({
         variant="filled"
         fullWidth
         value={searchByBeneficiary}
-        onChange={(e) => onBeneficiarySearch(e.target.value)}
+        onChange={(e) => {
+          scrollToTop();
+          onBeneficiarySearch(e.target.value);
+        }}
       />
     </div>
   );

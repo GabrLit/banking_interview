@@ -1,0 +1,20 @@
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.textInput {
+  background-color: white;
+}
+
+.infoField {
+  color: green;
+  padding: 0.5rem;
+}
+
+.submitButton {
+  height: 2rem;
+  background-color: green;
+  cursor: pointer;
+}

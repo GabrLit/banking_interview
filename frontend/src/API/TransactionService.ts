@@ -36,6 +36,17 @@ export const fetchByBeneficiary = async (beneficiary: string) => {
   return returnValue;
 };
 
-export const addTransaction = () => {
-  console.log("I am called");
+export const addTransaction = async (transaction: Transaction) => {
+  console.log(JSON.stringify(transaction));
+  try {
+    await fetch(BASEURL + `/transactions`, {
+      method: "POST",
+      body: JSON.stringify(transaction),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  } catch (err) {
+    console.error(err);
+  }
 };

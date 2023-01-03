@@ -8,19 +8,25 @@ import { CircularProgress } from "@mui/material";
 
 interface TransactionListProps {
   className?: string;
+  reference: any;
   transactionsData: Transaction[];
   hasMore: boolean;
   loadMore: () => void;
 }
 
 const TransactionList = ({
+  reference,
   className,
   transactionsData,
   hasMore,
   loadMore,
 }: TransactionListProps) => {
   return (
-    <section id="scrollableDiv" className={cn(styles.section, className)}>
+    <section
+      id="scrollableDiv"
+      ref={reference}
+      className={cn(styles.section, className)}
+    >
       <InfiniteScroll
         className={cn([styles.container])}
         dataLength={transactionsData.length}
