@@ -12,6 +12,7 @@ interface TransactionListProps {
   transactionsData: Transaction[];
   hasMore: boolean;
   loadMore: () => void;
+  onDelete: (id: number) => void;
 }
 
 const TransactionList = ({
@@ -20,6 +21,7 @@ const TransactionList = ({
   transactionsData,
   hasMore,
   loadMore,
+  onDelete,
 }: TransactionListProps) => {
   return (
     <section
@@ -41,7 +43,11 @@ const TransactionList = ({
         }
       >
         {transactionsData.map((transaction: Transaction) => (
-          <TransactionItem key={transaction.id} item={transaction} />
+          <TransactionItem
+            key={transaction.id}
+            item={transaction}
+            onDelete={onDelete}
+          />
         ))}
       </InfiniteScroll>
     </section>

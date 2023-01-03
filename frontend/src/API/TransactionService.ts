@@ -37,7 +37,6 @@ export const fetchByBeneficiary = async (beneficiary: string) => {
 };
 
 export const addTransaction = async (transaction: Transaction) => {
-  console.log(JSON.stringify(transaction));
   try {
     await fetch(BASEURL + `/transactions`, {
       method: "POST",
@@ -45,6 +44,16 @@ export const addTransaction = async (transaction: Transaction) => {
       headers: {
         "Content-Type": "application/json",
       },
+    });
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const deleteTransaction = async (id: number) => {
+  try {
+    await fetch(BASEURL + `/transactions/` + id, {
+      method: "DELETE",
     });
   } catch (err) {
     console.error(err);

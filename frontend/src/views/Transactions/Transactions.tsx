@@ -32,6 +32,13 @@ const Transactions = () => {
     TransactionService.addTransaction(transaction);
   };
 
+  const handleDelete = (id: number) => {
+    setTransactions(
+      transactions.filter((transaction) => transaction.id !== id)
+    );
+    TransactionService.deleteTransaction(id);
+  };
+
   useEffect(() => {
     // don't fetch any additional data when searched by beneficiary
     if (searchByBeneficiary !== "") return setHasMore(false);
@@ -44,8 +51,6 @@ const Transactions = () => {
 
       if (fetchedTransactions.length < FETCH_TRANSACTIONS_ITEM_LIMIT)
         setHasMore(false);
-
-      console.log(fetchedTransactions);
 
       setTransactions([...transactions, ...fetchedTransactions]);
     };
@@ -78,6 +83,7 @@ const Transactions = () => {
           }}
           className={styles.transactionList}
           transactionsData={transactions}
+          onDelete={handleDelete}
         />
       </section>
     </div>
