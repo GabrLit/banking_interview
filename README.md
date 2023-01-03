@@ -17,9 +17,3 @@ To run API, run following commands in ./backend directory:
     npm run server
 
 Server will be available on http://localhost:3000.
-
-Available endpoints:
-
-> GET /transactions
-
-## Technologies
