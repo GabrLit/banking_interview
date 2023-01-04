@@ -5,11 +5,11 @@ import styles from "./App.module.scss";
 
 function App() {
   return (
-    <section className={styles.rootSection}>
+    <div className={styles.rootSection}>
       <Navbar />
       <Transactions />
       <Footer />
-    </section>
+    </div>
   );
 }
 

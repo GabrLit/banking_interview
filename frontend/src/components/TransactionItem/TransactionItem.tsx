@@ -10,7 +10,6 @@ interface TransactionItemProps {
 
 function TransactionItem({ item, onDelete }: TransactionItemProps) {
   const [fade, setFade] = useState(false);
-  if (!item) return <></>;
 
   const colorClass = item.amount > 0 ? styles.amount_green : styles.amount_red;
 

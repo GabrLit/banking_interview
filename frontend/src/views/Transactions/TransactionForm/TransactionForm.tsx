@@ -11,18 +11,18 @@ interface TransactionFormProps {
   onAdd: (transactionData: Transaction) => void;
 }
 
+const createValidationSchema = () =>
+  Yup.object().shape({
+    amount: Yup.number()
+      .required("Required")
+      .positive("Number must be positive"),
+    account: Yup.number().required("Required"),
+    address: Yup.string().required("Required"),
+    description: Yup.string().required("Required"),
+  });
+
 const TransactionForm = ({ className, onAdd }: TransactionFormProps) => {
   const [successMsg, setSuccessMsg] = useState("");
-
-  const createValidationSchema = () =>
-    Yup.object().shape({
-      amount: Yup.number()
-        .required("Required")
-        .positive("Number must be positive"),
-      account: Yup.number().required("Required"),
-      address: Yup.string().required("Required"),
-      description: Yup.string().required("Required"),
-    });
 
   const formik = useFormik({
     initialValues: {
@@ -37,7 +37,7 @@ const TransactionForm = ({ className, onAdd }: TransactionFormProps) => {
       setSuccessMsg("Form submitted with success");
       formik.resetForm();
 
-      // id should be added from backend, and there should be check if generated id doesn't already exist
+      // id field should be added from backend, and there should be check if generated id doesn't already exist
       // I could check this on frontend side but since I don't always fetch complete data because of infinite scroll i can't
       // beneficiary field is missing from the task description
 

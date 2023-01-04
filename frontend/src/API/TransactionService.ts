@@ -5,35 +5,27 @@ export const fetchTransactions = async ({
   limit,
   page,
 }: QueryParams): Promise<Transaction[]> => {
-  let returnValue: Transaction[] = [];
-
   try {
     const response = await fetch(
       BASEURL + `/transactions?_page=${page}&_limit=${limit}`
     );
     const data = await response.json();
-    returnValue = data;
+    return data;
   } catch (err) {
-    console.error(err);
+    throw new Error("Error fetching transactions");
   }
-
-  return returnValue;
 };
 
 export const fetchByBeneficiary = async (beneficiary: string) => {
-  let returnValue: Transaction[] = [];
-
   try {
     const response = await fetch(
       BASEURL + `/transactions?beneficiary_like=${beneficiary}`
     );
     const data = await response.json();
-    returnValue = data;
+    return data;
   } catch (err) {
-    console.error(err);
+    throw new Error("Error fetching by beneficiary field");
   }
-
-  return returnValue;
 };
 
 export const addTransaction = async (transaction: Transaction) => {
@@ -46,7 +38,7 @@ export const addTransaction = async (transaction: Transaction) => {
       },
     });
   } catch (err) {
-    console.error(err);
+    throw new Error("Error adding new transaction");
   }
 };
 
@@ -56,6 +48,6 @@ export const deleteTransaction = async (id: number) => {
       method: "DELETE",
     });
   } catch (err) {
-    console.error(err);
+    throw new Error("Error deleting transaction");
   }
 };
