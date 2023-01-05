@@ -18,3 +18,19 @@
   background-color: green;
   cursor: pointer;
 }
+
+.input {
+  height: 2.5rem;
+  width: 100%;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+}
+
+.errorField {
+  font-size: 12px;
+  margin: 0;
+  color: red;
+  padding: 0.2rem;
+  height: auto;
+}

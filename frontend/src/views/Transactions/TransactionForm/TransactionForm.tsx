@@ -1,4 +1,3 @@
-import { TextField } from "@mui/material";
 import cn from "classnames";
 import { useFormik } from "formik";
 import { useState } from "react";
@@ -63,63 +62,66 @@ const TransactionForm = ({ className, onAdd }: TransactionFormProps) => {
         formik.handleSubmit();
       }}
     >
-      <TextField
-        id="filled-basic"
-        label="Amount"
-        variant="filled"
-        size="small"
-        fullWidth
-        name="amount"
-        type={"number"}
-        value={formik.values.amount}
-        onChange={formik.handleChange}
-        error={Boolean(formik.errors.amount)}
-        helperText={formik.errors.amount}
-        onFocus={() => setSuccessMsg("")}
-      />
+      <div className={styles.inputContainer}>
+        <input
+          className={styles.input}
+          name="amount"
+          placeholder="Amount"
+          type={"number"}
+          value={formik.values.amount}
+          onChange={formik.handleChange}
+        />
+        {formik.errors.amount && (
+          <p className={styles.errorField}>{formik.errors.amount}</p>
+        )}
+      </div>
 
-      <TextField
-        id="filled-basic"
-        label="Account number"
-        variant="filled"
-        size="small"
-        fullWidth
-        name="account"
-        type={"number"}
-        value={formik.values.account}
-        onChange={formik.handleChange}
-        error={Boolean(formik.errors.account)}
-        helperText={formik.errors.account}
-        onFocus={() => setSuccessMsg("")}
-      />
+      <div className={styles.inputContainer}>
+        <input
+          className={styles.input}
+          name="account"
+          placeholder="Account number"
+          type={"number"}
+          value={formik.values.account}
+          onChange={formik.handleChange}
+          onFocus={() => setSuccessMsg("")}
+        />
+        {formik.errors.account && (
+          <p data-testid="account_error" className={styles.errorField}>
+            {formik.errors.account}
+          </p>
+        )}
+      </div>
 
-      <TextField
-        id="filled-basic"
-        label="Address"
-        variant="filled"
-        size="small"
-        name={"address"}
-        fullWidth
-        value={formik.values.address}
-        onChange={formik.handleChange}
-        error={Boolean(formik.errors.address)}
-        helperText={formik.errors.address}
-        onFocus={() => setSuccessMsg("")}
-      />
+      <div className={styles.inputContainer}>
+        <input
+          className={styles.input}
+          name="address"
+          placeholder="Address"
+          type={"string"}
+          value={formik.values.address}
+          onChange={formik.handleChange}
+          onFocus={() => setSuccessMsg("")}
+        />
+        {formik.errors.address && (
+          <p className={styles.errorField}>{formik.errors.address}</p>
+        )}
+      </div>
 
-      <TextField
-        id="filled-basic"
-        label="Description"
-        variant="filled"
-        size="small"
-        name={"description"}
-        fullWidth
-        value={formik.values.description}
-        onChange={formik.handleChange}
-        error={Boolean(formik.errors.description)}
-        helperText={formik.errors.description}
-        onFocus={() => setSuccessMsg("")}
-      />
+      <div className={styles.inputContainer}>
+        <input
+          className={styles.input}
+          name="description"
+          placeholder="Description"
+          type={"string"}
+          value={formik.values.description}
+          onChange={formik.handleChange}
+          onFocus={() => setSuccessMsg("")}
+        />
+        {formik.errors.description && (
+          <p className={styles.errorField}>{formik.errors.description}</p>
+        )}
+      </div>
 
       <div className={styles.infoField}>{successMsg}</div>
 

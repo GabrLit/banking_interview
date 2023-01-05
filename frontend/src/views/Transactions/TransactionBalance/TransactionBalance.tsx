@@ -10,16 +10,12 @@ const TransactionBalance = ({
   className,
   transactionData,
 }: TransactionBalanceProps) => {
-  let totalBalanceOfCurrentlyFetched = 0;
-
-  if (transactionData) {
-    totalBalanceOfCurrentlyFetched = transactionData.reduce(
-      (accumulator, { amount }) => {
-        return accumulator + amount;
-      },
-      0
-    );
-  }
+  const totalBalanceOfCurrentlyFetched = transactionData.reduce(
+    (accumulator, { amount }) => {
+      return accumulator + amount;
+    },
+    0
+  );
 
   return (
     //Transaction balance would have to be calculated on specific endpoint,
